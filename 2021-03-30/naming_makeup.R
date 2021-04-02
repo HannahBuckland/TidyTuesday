@@ -171,7 +171,7 @@ row2_donuts <- cat_donut + facet_wrap(~id,nrow=1)
 makeupplot <- row1_donuts / row2_donuts +
   plot_layout(heights = c(1.5,1.4)) +
   plot_annotation(title = "\nNaming Bias in Makeup Shades",
-                  subtitle = "\nFoundation names of 5000+ shades from leading beauty brands have been compiled by\nThe Pudding and assigned categories. This visualisation shows the proportions of light \nto dark shades in all products, the proportions if shades were uniformly distributed across \nthe lightness spectrum and the distribution per naming category. The number in the \ncentre of each donut plot represents the average lightness value per category.\n",
+                  subtitle = "\nThe names and shade data of 5000+ shades of foundation have been compiled by\nThe Pudding and assigned categories. This visualisation shows the proportions of light \nto dark shades in all products, the proportions if shades were uniformly distributed across \nthe lightness spectrum and the distribution per naming category. The number in the \ncentre of each donut plot represents the average lightness value per category.\n",
                   caption = "Visualisation: Hannah Buckland | @HannahMBuckland \n Source: The Pudding, Ofunne Amaka and Amber Thomas. | #TidyTuesday\n",
                   theme = theme(plot.title = element_text(size = 24, 
                                                           family = "Josefin Slab",
