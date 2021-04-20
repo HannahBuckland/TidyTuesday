@@ -1,7 +1,7 @@
 # TidyTuesday
 
-My contributions to the #TidyTuesday challenge, a weekly project intiated by The project was founded in 2018 by Thomas Mock and organized by the R4DS ("R for Data Science") online learning community.
-Each week a new data set is shared and the community have a go at finding a story to tell from the data. 
+My contributions to the #TidyTuesday challenge, a weekly project intiated by Thomas Mock and organized by the R4DS ("R for Data Science") online learning community.
+Each week a new data set is shared and the community have a go at finding a story to tell from the data. Visualisations are shared via Twitter using the #TidyTuesday hashtag.
 So far my contributions have focused on improving my fluency with the {tidyverse} packages including {ggplot2} and {dplyr}.
 
 # [2021-04-20](https://github.com/HannahBuckland/TidyTuesday/tree/master/2021-04-20)
