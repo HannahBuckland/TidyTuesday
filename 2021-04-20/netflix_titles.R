@@ -77,9 +77,9 @@ stripplt <- ggplot() +
              arrow = arrow(length=unit(2,"mm"))) +
   annotate(geom = "text",
            x = dis_arrow$x1,
-           y = dis_arrow$y1 - 0.05,
+           y = dis_arrow$y1 - 0.02,
            label = "Disney+\nLaunched\nin the USA",
-           colour = txtcolour,
+           colour = "grey70",
            family = "Bebas Neue",
            vjust = 1) +
   scale_fill_gradient(low =  "#e50914", high ="#190103") +
