@@ -11,6 +11,7 @@ library(ggtext)
 library(ggfx)
 library(lubridate)
 library(Cairo)
+library(grid)
 
 tuesdata <- tidytuesdayR::tt_load('2021-04-20') # read in TidyTuesday Datat
 
@@ -26,6 +27,12 @@ monthly <- netflix %>%
   count(date_month) %>%
   mutate(label_pos = as.numeric(date_month))
 
+# Adding month that Disney plus was launched in the US
+disneyplus <- data.frame(date_month = "2019-11-01") %>%
+  mutate(date_month = date(date_month),
+         label_pos = as.numeric(date_month))
+  
+
 # Plotting -----------
 
 # x axis breaks and labels
@@ -37,6 +44,12 @@ axislabels <- data.frame(label = monthly$date_month[seq(1,length(monthly$date_mo
 # colour information
 bgcolour <- "grey10"
 txtcolour <- "grey60"
+
+# Positioning arrow
+dis_arrow <- data.frame(x1 = disneyplus$label_pos+250, 
+                        y1 = 0.8, 
+                        x2 = disneyplus$label_pos+25, 
+                        y2 = 1)
 
 # horizontal tile plot
 stripplt <- ggplot() + 
@@ -53,6 +66,22 @@ stripplt <- ggplot() +
              id = "blended"
   ) +
   with_shadow("blended", sigma = 3, colour = "black") +
+  geom_tile(data = disneyplus,
+            mapping = aes(x=date_month,
+                          y = 1), color = "white",
+            fill = NA, width = 50, height = 1.1, linetype = 2) +
+  geom_curve(data = dis_arrow,
+             mapping = aes(x=x1,y=y1,xend=x2,yend=y2),
+             curvature = 0.3,
+             colour = txtcolour,
+             arrow = arrow(length=unit(2,"mm"))) +
+  annotate(geom = "text",
+           x = dis_arrow$x1,
+           y = dis_arrow$y1 - 0.05,
+           label = "Disney+\nLaunched\nin the USA",
+           colour = txtcolour,
+           family = "Bebas Neue",
+           vjust = 1) +
   scale_fill_gradient(low =  "#e50914", high ="#190103") +
   theme_void() +
   scale_x_continuous(breaks = axisbreaks, 
@@ -83,8 +112,8 @@ stripplt <- ggplot() +
                                     size = 8, hjust = 1,
                                     margin = margin(t = 30)))
 
-stripplt
+stripplt 
 
 #save as Cairo png (anti alias)
-ggsave("2021-04-20/netflix.png", stripplt, width = 8, height = 5, dpi = 300, type = "cairo-png")
+ggsave("2021-04-20/netflixdisney.png", stripplt, width = 8, height = 5, dpi = 300, type = "cairo-png")
 
